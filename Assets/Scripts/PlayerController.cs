@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "EnemyBullet")
         {
-            Debug.Log("Ow " + other.tag);
             gameController.playerHealth -= 10;
+            Destroy(other.gameObject);
         }
     }
 }

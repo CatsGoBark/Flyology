@@ -8,7 +8,7 @@ using UnityEngine;
 public class BasicEnemyScript : MonoBehaviour {
 
     public float enemyHealth = 50;  // Enemy lose 10 health per hit
-    public int pointValue = 10;
+    public int pointValue = 1000;
 
     public GameController gameController;
 	

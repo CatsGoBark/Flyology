@@ -10,7 +10,7 @@ public class ShootBurstTowardsPlayer : MonoBehaviour {
     public float range = 20;        // How close the player has to be to start firing
     public float bulletSpeed;       // How fast the bullet moves
     public float burstRate = 0.2f;  // How close each bullet is to each other in a burst
-    public float numInBurst = 3;    // How many bullets are fired in a burst
+    public float numInBurst = 5;    // How many bullets are fired in a burst
 
     public GameObject bullet;       // The bullet being fired
     public GameObject player;       // Reference to the player
