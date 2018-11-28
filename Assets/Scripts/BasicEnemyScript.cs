@@ -7,16 +7,10 @@ using UnityEngine;
  */
 public class BasicEnemyScript : MonoBehaviour {
 
-    public float enemyHealth;               // Enemy lose 10 health per hit
-    public int pointValue;
+    public float enemyHealth = 50;  // Enemy lose 10 health per hit
+    public int pointValue = 10;
 
     public GameController gameController;
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

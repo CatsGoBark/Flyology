@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script that fires a single shot towards the player in set intervals if they are within range
+ */
 public class ShootSingleTowardsPlayer : MonoBehaviour {
 
-    public float fireRate;          // Seconds between shots (Lower is faster)
-    public float range;             // How close the player has to be to start firing
+    public float fireRate = 2;      // Seconds between shots (Lower is faster)
+    public float range = 20;        // How close the player has to be to start firing
     public float bulletSpeed;       // How fast the bullet moves
 
     public GameObject bullet;       // The bullet being fired

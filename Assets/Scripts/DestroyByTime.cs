@@ -8,7 +8,7 @@ using UnityEngine;
  */
 public class DestroyByTime : MonoBehaviour {
 
-    public float lifetime;
+    public float lifetime = 5;
 
 	// Use this for initialization
 	void Start () {

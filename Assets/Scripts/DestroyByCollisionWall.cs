@@ -7,12 +7,6 @@ using UnityEngine;
  */
 public class DestroyByCollisionWall : MonoBehaviour {
 
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-
     // Collide Trigger
     private void OnTriggerEnter2D(Collider2D other)
     {
