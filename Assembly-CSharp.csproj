@@ -61,10 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BulletDestroyByCollision.cs" />
+    <Compile Include="Assets\Scripts\BasicEnemyScript.cs" />
     <Compile Include="Assets\Scripts\BulletMover.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\DestroyByCollisionWall.cs" />
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
+    <Compile Include="Assets\Scripts\EnemyFiringPatterns\ShootSingleTowardsPlayer.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TeleportBoundaryObjects.cs" />
     <Compile Include="Assets\Scripts\WorldController.cs" />

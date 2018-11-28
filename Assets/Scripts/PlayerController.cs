@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bullet;
     public Transform bulletSpawn;
+    public GameController gameController;
 
     private Rigidbody2D rb;         // Reference to RigidBody component
     private float nextFire;
@@ -75,5 +76,14 @@ public class PlayerController : MonoBehaviour
             nextBoost = Time.time + boostRate;
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "EnemyBullet")
+        {
+            Debug.Log("Ow " + other.tag);
+            gameController.playerHealth -= 10;
+        }
     }
 }
