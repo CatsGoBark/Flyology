@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             GameObject shot = (GameObject)Instantiate(bullet, bulletSpawn.position, rb.transform.rotation);
+            shot.GetComponent<Rigidbody2D>().velocity += GetComponent<Rigidbody2D>().velocity;
         }
 
         // Boost Button
