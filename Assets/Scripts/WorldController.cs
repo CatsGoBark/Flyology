@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,7 +54,6 @@ public class WorldController : MonoBehaviour {
                 break;
             if (objs[i].tag == "Boundary" || objs[i].tag == "World")
                 continue;
-            Debug.Log(objs[i].name);
             objs[i].transform.position += new Vector3(col.bounds.size.x * 3, 0, 0);
         }
 
@@ -61,17 +61,16 @@ public class WorldController : MonoBehaviour {
         worldTiles[0].transform.position += 
             new Vector3(col.bounds.size.x * 3, 0, 0);
 
-        // Swap cell order (REALLY LAZY HARD CODE VERSION)
+        // Swap cell order
         GameObject tmp = worldTiles[0];
-        worldTiles[0] = worldTiles[1];
-        worldTiles[1] = worldTiles[2];
-        worldTiles[2] = tmp;
+        Array.Copy(worldTiles, 1, worldTiles, 0,worldTiles.Length - 1);
+        worldTiles[worldTiles.Length - 1] = tmp;
     }
 
     public void shiftWorldLeft()
     {
         // Move all objects contained in cell 2 to the left
-        BoxCollider2D col = worldTiles[2].GetComponent<BoxCollider2D>();
+        BoxCollider2D col = worldTiles[worldTiles.Length-1].GetComponent<BoxCollider2D>();
         Collider2D[] objs = new Collider2D[256];
         Physics2D.OverlapBox(col.transform.position, col.bounds.extents * 2, 0, filter, objs);
         for (int i = 0; i < objs.Length; i++)
@@ -86,10 +85,9 @@ public class WorldController : MonoBehaviour {
 
         worldTiles[2].transform.position -= new Vector3(col.bounds.size.x * 3, 0, 0);
 
-        // Swap cell order (REALLY LAZY HARD CODE VERSION)
-        GameObject tmp = worldTiles[2];
-        worldTiles[2] = worldTiles[1];
-        worldTiles[1] = worldTiles[0];
+        // Swap cell order 
+        GameObject tmp = worldTiles[worldTiles.Length - 1];
+        Array.Copy(worldTiles, 0, worldTiles, 1, worldTiles.Length - 1);
         worldTiles[0] = tmp;
     }
 }
