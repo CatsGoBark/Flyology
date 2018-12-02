@@ -8,7 +8,7 @@ public class ShootBurstTowardsPlayer : MonoBehaviour {
 
     public float fireRate = 2;      // Seconds between shots (Lower is faster)
     public float range = 20;        // How close the player has to be to start firing
-    public float bulletSpeed;       // How fast the bullet moves
+    public float bulletSpeed = 5;   // How fast the bullet moves
     public float burstRate = 0.2f;  // How close each bullet is to each other in a burst
     public float numInBurst = 5;    // How many bullets are fired in a burst
 
@@ -46,6 +46,7 @@ public class ShootBurstTowardsPlayer : MonoBehaviour {
                 nextFireBurst = Time.time + burstRate;
                 GameObject shot = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 shot.transform.up = player.transform.position - shot.transform.position;
+                shot.GetComponent<Rigidbody2D>().velocity = shot.transform.up * bulletSpeed;
                 currentShotNum++;
             }
         }

@@ -5,32 +5,59 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-    public float playerHealth = 100;        // Player health. Game over at 0
-    public int playerScore;                 // Score
-    
-    public float playerRegenAmount = 5;    // How much health to regenerate per second
+    public float playerHealth = 100;        // Player health. Game over at 0 
+    public float playerHealthRegen = 5;     // How much health to regenerate per second
+
+    public float playerEnergy = 100;        // Player energy. Cannot boost or shoot at 0
+    public float playerEnergyRegen = 10;    // How much energy to regenerate per second
+
+    public int playerScore = 0;             // Score
 
     public GameObject player;               // Reference to player
     public Text scoreText;                  // Reference to UI score text
     public Slider healthSlider;             // Reference to UI health slider
+    public Slider energySlider;             // Reference to UI energy slider
+
+    public WorldController worldController; // Reference to the world
+
+    enum Level { MainMenu, Playing, GameOver};
+
+    private Level currentStage;             // Dictates what stage the game is currently at
 
 	// Use this for initialization
 	void Start ()
     {
+        currentStage = Level.MainMenu;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        //Regen player health
-        if (playerRegenAmount != 0 && playerHealth != healthSlider.maxValue)
+        // Show main menu
+        if (currentStage == Level.MainMenu)
         {
-            playerHealth += playerRegenAmount * Time.deltaTime;
+
         }
 
+        // Play game
+
+        // Regen player health
+        if (playerHealthRegen != 0 && playerHealth < healthSlider.maxValue)
+        {
+            playerHealth += playerHealthRegen * Time.deltaTime;
+        }
+
+        // Regen player energy
+        if (playerEnergyRegen != 0 && playerEnergy < healthSlider.maxValue)
+        {
+            playerEnergy += playerEnergyRegen * Time.deltaTime; 
+        }
+
+        // Update score and sliders
         playerScore++;
         scoreText.text = "Score: " + playerScore.ToString().PadLeft(9, '0');
         healthSlider.value = playerHealth;
+        energySlider.value = playerEnergy;
 
         if (playerHealth <= 0)
         {
@@ -41,7 +68,7 @@ public class GameController : MonoBehaviour {
 	}
 
     // Restart the game
-    void restart()
+    void Restart()
     {
         // Reset numerical values
         playerHealth = 100;
