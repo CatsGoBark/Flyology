@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+    public static GameController instance;
 
     public float playerHealth = 100;        // Player health. Game over at 0 
     public float playerHealthRegen = 5;     // How much health to regenerate per second
@@ -24,8 +25,20 @@ public class GameController : MonoBehaviour {
 
     private Level currentStage;             // Dictates what stage the game is currently at
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        //If we don't currently have a game control...
+        if (instance == null)
+            //...set this one to be it...
+            instance = this;
+        //...otherwise...
+        else if (instance != this)
+            //...destroy this one because it is a duplicate.
+            Destroy(gameObject);
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         currentStage = Level.MainMenu;
 	}
