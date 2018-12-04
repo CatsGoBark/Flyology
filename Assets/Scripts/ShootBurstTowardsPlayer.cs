@@ -26,6 +26,8 @@ public class ShootBurstTowardsPlayer : MonoBehaviour {
         nextFire = 0;
         currentShotNum = 0;
         isFiring = false;
+        if (player == null)
+            player = GameObject.Find("Player");
     }
 
     void FixedUpdate()

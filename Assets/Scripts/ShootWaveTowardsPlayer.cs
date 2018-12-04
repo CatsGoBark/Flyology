@@ -23,6 +23,8 @@ public class ShootWaveTowardsPlayer : MonoBehaviour {
     void Start () {
         nextFire = 0;
         isFiring = false;
+        if (player == null)
+            player = GameObject.Find("Player");
     }
 	
 	// Update is called once per frame

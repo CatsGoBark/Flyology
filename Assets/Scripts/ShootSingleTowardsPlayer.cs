@@ -20,7 +20,9 @@ public class ShootSingleTowardsPlayer : MonoBehaviour {
 	void Start ()
     {
         nextFire = 0;
-	}
+        if (player == null)
+            player = GameObject.Find("Player");
+    }
 	
 	void FixedUpdate ()
     {

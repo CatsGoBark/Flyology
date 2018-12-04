@@ -9,15 +9,13 @@ public class BasicEnemyScript : MonoBehaviour {
 
     public float enemyHealth = 50;  // Enemy lose 10 health per hit
     public int pointValue = 1000;
-
-    public GameController gameController;
 	
 	// Update is called once per frame
 	void Update () {
 		if (enemyHealth <= 0)
         {
             // Add score and destroy
-            gameController.playerScore += pointValue;
+            GameController.instance.playerScore += pointValue;
             Destroy(gameObject);
         }
 	}
