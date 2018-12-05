@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform bulletSpawn;
     public GameController gameController;
+    public GameObject camera;
 
     private Rigidbody2D rb;         // Reference to RigidBody component
     private float nextFire;
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             gameController.playerHealth -= 10;
             Destroy(other.gameObject);
+            camera.GetComponent<CameraController>().ShakeCamera(5.0f, 0.03f);
         }
     }
 }

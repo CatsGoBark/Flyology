@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
     public static GameController instance;
 
     public float playerHealth = 100;        // Player health. Game over at 0 
-    public float playerHealthRegen = 5;     // How much health to regenerate per second
+    public float playerHealthRegen = 1;     // How much health to regenerate per second
 
     public float playerEnergy = 100;        // Player energy. Cannot boost or shoot at 0
     public float playerEnergyRegen = 10;    // How much energy to regenerate per second
@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
     public Slider energySlider;             // Reference to UI energy slider
 
     public WorldController worldController; // Reference to the world
+    public EnemySpawner enemySpawner;       // Reference to the enemy spawner
 
     enum Level { MainMenu, Playing, GameOver};
 
@@ -38,7 +39,8 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        currentStage = Level.MainMenu;
+        currentStage = Level.Playing;
+        enemySpawner.startSpawning = false;
 	}
 	
 	// Update is called once per frame
@@ -47,35 +49,40 @@ public class GameController : MonoBehaviour {
         // Show main menu
         if (currentStage == Level.MainMenu)
         {
-
+            player.transform.position = new Vector2(0, 0);
         }
-
-        // Play game
-
-        // Regen player health
-        if (playerHealthRegen != 0 && playerHealth < healthSlider.maxValue)
+        else if (currentStage == Level.Playing)
         {
-            playerHealth += playerHealthRegen * Time.deltaTime;
-        }
+            enemySpawner.startSpawning = true;
 
-        // Regen player energy
-        if (playerEnergyRegen != 0 && playerEnergy < healthSlider.maxValue)
+            // Regen player health
+            if (playerHealthRegen != 0 && playerHealth < healthSlider.maxValue)
+            {
+                playerHealth += playerHealthRegen * Time.deltaTime;
+            }
+
+            // Regen player energy
+            if (playerEnergyRegen != 0 && playerEnergy < healthSlider.maxValue)
+            {
+                playerEnergy += playerEnergyRegen * Time.deltaTime;
+            }
+
+            // Update score and sliders
+            playerScore++;
+            scoreText.text = "Score: " + playerScore.ToString().PadLeft(9, '0');
+            healthSlider.value = playerHealth;
+            energySlider.value = playerEnergy;
+
+            if (playerHealth <= 0)
+            {
+                currentStage = Level.GameOver;
+                Debug.Log("GAME OVER");
+            }
+        }
+        else if (currentStage == Level.GameOver)
         {
-            playerEnergy += playerEnergyRegen * Time.deltaTime; 
+
         }
-
-        // Update score and sliders
-        playerScore++;
-        scoreText.text = "Score: " + playerScore.ToString().PadLeft(9, '0');
-        healthSlider.value = playerHealth;
-        energySlider.value = playerEnergy;
-
-        if (playerHealth <= 0)
-        {
-            Debug.Log("GAME OVER");
-        }
-
-
 	}
 
     // Restart the game
