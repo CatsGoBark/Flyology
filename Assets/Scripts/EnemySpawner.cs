@@ -21,12 +21,21 @@ public class EnemySpawner : MonoBehaviour {
         nextSpawn = 0;
 
         // TODO Maybe find a way to do this automatically?
-        upperBoundary = 14;             // Hardcoded
-        lowerBoundary = -14;            // Hardcoded
+
+        var sprites = World.worldTiles[1].GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sprite in sprites)
+        {
+            if(sprite.gameObject.name == "background")
+            {
+                upperBoundary = sprite.sprite.bounds.min.y * sprite.transform.localScale.y;
+                lowerBoundary = sprite.sprite.bounds.max.y * sprite.transform.localScale.y;
+                break;
+            }
+        }
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    void FixedUpdate () {
         if (!startSpawning)
             return;
 
