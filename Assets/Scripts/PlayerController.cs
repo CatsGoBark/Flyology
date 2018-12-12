@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             GameObject shot = (GameObject)Instantiate(bullet, bulletSpawn.position, rb.transform.rotation);
             shot.GetComponent<Rigidbody2D>().velocity += GetComponent<Rigidbody2D>().velocity;
             source.pitch = Random.Range(0.1f, 0.5f);
-            source.PlayOneShot(shootSound, 0.05f);
+            source.PlayOneShot(shootSound, 0.1f);
         }
 
         // Boost Button
