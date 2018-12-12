@@ -810,53 +810,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741762148}
   m_CullTransparentMesh: 0
---- !u!1001 &803572456
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 8.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551909930461710, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114335221538806418, guid: 2d3dd6f2a45b4564eb17a12aad839c7d,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1314840585}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &804353357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,6 +2382,7 @@ MonoBehaviour:
   - {fileID: 1152905889931134, guid: 9adc32bc9d933cc43a9fa53238f6c3fd, type: 2}
   - {fileID: 1729855470125204, guid: b9c7b9ac0c3f35e4db55bb0921ed604b, type: 2}
   - {fileID: 1807191558096158, guid: 2d3dd6f2a45b4564eb17a12aad839c7d, type: 2}
+  - {fileID: 1839925449288520, guid: 8c1e3f5087e6f6b43996f0e79fe07329, type: 2}
   spawnTime: 5
   startSpawning: 1
   player: {fileID: 1314840585}

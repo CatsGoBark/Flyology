@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    public float playerHealth = 1;        // Player health. Game over at 0 
+    public float playerHealth = 100;        // Player health. Game over at 0 
     public float playerHealthRegen = 1;     // How much health to regenerate per second
 
     public float playerEnergy = 100;        // Player energy. Cannot boost or shoot at 0
