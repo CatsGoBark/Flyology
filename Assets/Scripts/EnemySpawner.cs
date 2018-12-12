@@ -41,11 +41,9 @@ public class EnemySpawner : MonoBehaviour {
 
         if (Time.time < nextSpawn)
             return;
-    
 
-        //Decrease spawntime as player progresses
         if(GameController.instance.playerScore % 500 == 0) {
-            spawnTime -= Mathf.Min(spawnTime - 0.5f, 3f);                                               
+            updateSpawnRate(0.25f);
         }
 
         // Randomly spawn enemy left or right of the player outside the camera
@@ -65,5 +63,10 @@ public class EnemySpawner : MonoBehaviour {
         GameObject enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length)]);
         enemy.transform.position = pos;
         nextSpawn = Time.time + spawnTime;
+    }
+
+    public void updateSpawnRate(float rate)
+    {
+        spawnTime = Mathf.Min(spawnTime - rate, 3f);
     }
 }

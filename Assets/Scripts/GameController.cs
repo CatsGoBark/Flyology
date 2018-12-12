@@ -52,17 +52,6 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
-        //Pause game on escape press
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    currentStage = Level.Paused;
-        //}
-
-        //if(currentStage == Level.Paused) {
-        //    Debug.Log("paused");
-        //}
-        
         //If game is over, display game over text and stop movement
         if (currentStage == Level.GameOver)
         {
@@ -119,18 +108,4 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
-    //// Restart the game
-    //void Restart()
-    //{
-    //    // Reset numerical values
-    //    playerHealth = 100;
-    //    playerScore = 0;
-
-    //    // Clear enemies
-
-    //    // Reset playing field
-
-    //    // Restart game
-    //}
 }

@@ -17,8 +17,9 @@ public class EnemyMoveToPlayer : MonoBehaviour {
             return;
         }
 
-        if (GameController.instance.playerScore % 750 == 0) {
-            speed = Mathf.Max(speed + 0.5f, 7.75f);
+        if (GameController.instance.playerScore % 500 == 0)
+        {
+            updateSpeed(0.15f);
         }
 
         transform.LookAt(playerShip.transform.position);
@@ -30,5 +31,10 @@ public class EnemyMoveToPlayer : MonoBehaviour {
             Debug.Log("moving");
             transform.Translate(new Vector2(speed * Time.deltaTime, 0));
         }
+    }
+
+    public void updateSpeed(float rate)
+    {
+        speed = Mathf.Max(speed + rate, 7.75f);
     }
 }

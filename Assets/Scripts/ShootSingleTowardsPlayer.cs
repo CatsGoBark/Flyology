@@ -23,8 +23,8 @@ public class ShootSingleTowardsPlayer : MonoBehaviour {
         if (player == null)
             player = GameObject.Find("Player");
     }
-	
-	void FixedUpdate ()
+
+    void FixedUpdate ()
     {
         //Don't fire if game is over
         if (GameController.instance.currentStage == GameController.Level.GameOver)
@@ -45,4 +45,13 @@ public class ShootSingleTowardsPlayer : MonoBehaviour {
             shot.GetComponent<Rigidbody2D>().velocity = shot.transform.up * bulletSpeed;
         }
 	}
+
+    public void updateFireRate(float rate)
+    {
+        fireRate = Mathf.Min(fireRate + rate, 1.5f);
+    }
+    public void updateBulletSpeed(float rate)
+    {
+        bulletSpeed = Mathf.Max(bulletSpeed + rate, 7.5f);
+    }
 }

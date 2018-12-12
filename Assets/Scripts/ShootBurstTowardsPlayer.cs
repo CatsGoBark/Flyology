@@ -69,4 +69,13 @@ public class ShootBurstTowardsPlayer : MonoBehaviour {
             isFiring = true;
         }
     }
+
+    public void updateFireRate(float rate)
+    {
+        fireRate = Mathf.Min(fireRate + rate, 1.5f);
+    }
+    public void updateBulletSpeed(float rate)
+    {
+        bulletSpeed = Mathf.Max(bulletSpeed + rate, 7.5f);
+    }
 }
