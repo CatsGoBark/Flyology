@@ -104,6 +104,12 @@ public class PlayerController : MonoBehaviour
             camera.GetComponent<CameraController>().ShakeCamera(5.0f, 0.03f);
             source.pitch = Random.Range(0.8f, 1.0f);
             source.PlayOneShot(damageSound, 1.0f);
+        } else if(other.tag == "Enemy") 
+        {
+            gameController.playerHealth -= 10;
+            camera.GetComponent<CameraController>().ShakeCamera(5.0f, 0.03f);
+            source.pitch = Random.Range(0.8f, 1.0f);
+            source.PlayOneShot(damageSound, 1.0f);
         }
     }
 }

@@ -46,3 +46,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3587316107
+    locked: 0
+  - name: Foreground
+    uniqueID: 1846359003
+    locked: 0
+  - name: StillEnemy
+    uniqueID: 2246602777
+    locked: 0
+  - name: MovingEnemy
+    uniqueID: 742056691
+    locked: 0
+  - name: Player
+    uniqueID: 563138079
+    locked: 0
+  - name: PlayerBullet
+    uniqueID: 2169716099
+    locked: 0
+  - name: EnemyBullet
+    uniqueID: 4109130553
+    locked: 0
+  - name: UI
+    uniqueID: 1405438917
+    locked: 0
