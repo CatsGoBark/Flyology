@@ -20,6 +20,12 @@ public class PlayerController : MonoBehaviour
     public GameController gameController;
     public GameObject camera;
 
+    public AudioClip shootSound;
+    public AudioClip damageSound;
+    public AudioClip boostSound;
+
+    private AudioSource source;
+
     private Rigidbody2D rb;         // Reference to RigidBody component
     private float nextFire;
     private float nextBoost;
@@ -33,6 +39,9 @@ public class PlayerController : MonoBehaviour
         // Instantiate variables
         nextFire = 0;
         nextBoost = 0;
+
+        // Audio
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -68,6 +77,8 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + fireRate;
             GameObject shot = (GameObject)Instantiate(bullet, bulletSpawn.position, rb.transform.rotation);
             shot.GetComponent<Rigidbody2D>().velocity += GetComponent<Rigidbody2D>().velocity;
+            source.pitch = Random.Range(0.1f, 0.5f);
+            source.PlayOneShot(shootSound, 0.05f);
         }
 
         // Boost Button
@@ -75,6 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddRelativeForce(Vector2.up * boostAmount);
             nextBoost = Time.time + boostRate;
+            source.PlayOneShot(boostSound, 1.0f);
         }
 
     }
@@ -86,6 +98,8 @@ public class PlayerController : MonoBehaviour
             gameController.playerHealth -= 10;
             Destroy(other.gameObject);
             camera.GetComponent<CameraController>().ShakeCamera(5.0f, 0.03f);
+            source.pitch = Random.Range(0.8f, 1.0f);
+            source.PlayOneShot(damageSound, 1.0f);
         }
     }
 }
