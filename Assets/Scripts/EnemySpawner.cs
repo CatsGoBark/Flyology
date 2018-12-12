@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour {
             xPos += Random.Range(0, 20);
         }
         Vector2 pos = new Vector2(xPos, Random.Range(upperBoundary, lowerBoundary));
-        GameObject enemy = Instantiate(enemyList[0]);
+        GameObject enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length)]);
         enemy.transform.position = pos;
         nextSpawn = Time.time + spawnTime;
     }

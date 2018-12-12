@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour {
     public GameObject player;               // Reference to player
     public Text scoreText;                  // Reference to UI score text
     public Slider healthSlider;             // Reference to UI health slider
-    public Slider energySlider;             // Reference to UI energy slider
 
     public WorldController worldController; // Reference to the world
     public EnemySpawner enemySpawner;       // Reference to the enemy spawner
@@ -61,17 +60,10 @@ public class GameController : MonoBehaviour {
                 playerHealth += playerHealthRegen * Time.deltaTime;
             }
 
-            // Regen player energy
-            if (playerEnergyRegen != 0 && playerEnergy < healthSlider.maxValue)
-            {
-                playerEnergy += playerEnergyRegen * Time.deltaTime;
-            }
-
             // Update score and sliders
             playerScore++;
             scoreText.text = "Score: " + playerScore.ToString().PadLeft(9, '0');
             healthSlider.value = playerHealth;
-            energySlider.value = playerEnergy;
 
             if (playerHealth <= 0)
             {
