@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMoveToPlayer : MonoBehaviour {
 
     public GameObject playerShip;
-    public int speed = 5;
+    public float speed = 5f;
 
     void Start()
     {
@@ -15,6 +15,10 @@ public class EnemyMoveToPlayer : MonoBehaviour {
     void Update () {
         if(GameController.instance.currentStage == GameController.Level.GameOver) {
             return;
+        }
+
+        if (GameController.instance.playerScore % 750 == 0) {
+            speed = Mathf.Max(speed + 0.5f, 7.75f);
         }
 
         transform.LookAt(playerShip.transform.position);

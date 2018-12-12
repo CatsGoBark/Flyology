@@ -41,6 +41,12 @@ public class EnemySpawner : MonoBehaviour {
 
         if (Time.time < nextSpawn)
             return;
+    
+
+        //Decrease spawntime as player progresses
+        if(GameController.instance.playerScore % 500 == 0) {
+            spawnTime -= Mathf.Min(spawnTime - 0.5f, 3f);                                               
+        }
 
         // Randomly spawn enemy left or right of the player outside the camera
         int randInt = Random.Range(0, 2);
