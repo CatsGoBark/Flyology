@@ -26,6 +26,12 @@ public class ShootSingleTowardsPlayer : MonoBehaviour {
 	
 	void FixedUpdate ()
     {
+        //Don't fire if game is over
+        if (GameController.instance.currentStage == GameController.Level.GameOver)
+        {
+            return;
+        }
+
         // Checks if player is within firing range
         if (Vector3.Distance(transform.position, player.transform.position) > range)
             return;

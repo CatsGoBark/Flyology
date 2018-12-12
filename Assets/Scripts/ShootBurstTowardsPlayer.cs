@@ -32,6 +32,12 @@ public class ShootBurstTowardsPlayer : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //Don't fire if game is over
+        if (GameController.instance.currentStage == GameController.Level.GameOver)
+        {
+            return;
+        }
+
         // Continue burst if started
         if (isFiring)
         {

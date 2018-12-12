@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private float nextFire;
     private float nextBoost;
 
+    public static bool isAlive;
+
     // Use this for initialization
     void Start()
     {
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         // Instantiate variables
         nextFire = 0;
         nextBoost = 0;
+        isAlive = true;
 
         // Audio
         source = GetComponent<AudioSource>();
@@ -52,43 +55,44 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate is called in fixed intervals. Put physics/movement code here
 	void FixedUpdate ()
 	{
-        // Controls for rotating player
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.AddTorque(rotateSpeed);
-        }
+        if(isAlive) {
+            // Controls for rotating player
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddTorque(rotateSpeed);
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.AddTorque(-rotateSpeed);
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddTorque(-rotateSpeed);
+            }
 
-        // Controls for accellerating 
-        if (Input.GetKey(KeyCode.W) && (
-            rb.velocity.sqrMagnitude < maxVelocity || rb.velocity.y < 20))
-        {
-            // Only accellerate if the player is below maxVelocity or is falling
-            rb.AddRelativeForce(Vector2.up * speed);
-        }
+            // Controls for accellerating 
+            if (Input.GetKey(KeyCode.W) && (
+                rb.velocity.sqrMagnitude < maxVelocity || rb.velocity.y < 20))
+            {
+                // Only accellerate if the player is below maxVelocity or is falling
+                rb.AddRelativeForce(Vector2.up * speed);
+            }
 
-        //  Controls for shooting 
-        if (Input.GetKey(KeyCode.Space) && Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            GameObject shot = (GameObject)Instantiate(bullet, bulletSpawn.position, rb.transform.rotation);
-            shot.GetComponent<Rigidbody2D>().velocity += GetComponent<Rigidbody2D>().velocity;
-            source.pitch = Random.Range(0.1f, 0.5f);
-            source.PlayOneShot(shootSound, 0.1f);
-        }
+            //  Controls for shooting 
+            if (Input.GetKey(KeyCode.Space) && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                GameObject shot = (GameObject)Instantiate(bullet, bulletSpawn.position, rb.transform.rotation);
+                shot.GetComponent<Rigidbody2D>().velocity += GetComponent<Rigidbody2D>().velocity;
+                source.pitch = Random.Range(0.1f, 0.5f);
+                source.PlayOneShot(shootSound, 0.1f);
+            }
 
-        // Boost Button
-        if (Input.GetKey(KeyCode.LeftShift) && Time.time > nextBoost)
-        {
-            rb.AddRelativeForce(Vector2.up * boostAmount);
-            nextBoost = Time.time + boostRate;
-            source.PlayOneShot(boostSound, 1.0f);
+            // Boost Button
+            if (Input.GetKey(KeyCode.LeftShift) && Time.time > nextBoost)
+            {
+                rb.AddRelativeForce(Vector2.up * boostAmount);
+                nextBoost = Time.time + boostRate;
+                source.PlayOneShot(boostSound, 1.0f);
+            }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
