@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     public WorldController worldController; // Reference to the world
     public EnemySpawner enemySpawner;       // Reference to the enemy spawner
 
-    public enum Level { MainMenu, Playing, GameOver };
+    public enum Level { MainMenu, Playing, Paused, GameOver };
 
     public Level currentStage;             // Dictates what stage the game is currently at
 
@@ -47,6 +47,41 @@ public class GameController : MonoBehaviour
         currentStage = Level.Playing;
         enemySpawner.startSpawning = false;
         gameOverText.SetActive(false);
+
+    }
+
+    void Update()
+    {
+
+        //Pause game on escape press
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    currentStage = Level.Paused;
+        //}
+
+        //if(currentStage == Level.Paused) {
+        //    Debug.Log("paused");
+        //}
+        
+        //If game is over, display game over text and stop movement
+        if (currentStage == Level.GameOver)
+        {
+            scoreText.SetActive(false);
+            healthSlider.SetActive(false);
+            gameOverText.SetActive(true);
+
+            enemySpawner.startSpawning = false;
+            PlayerController.isAlive = false;
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                SceneManager.LoadScene(mainMenuLevel);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -81,24 +116,6 @@ public class GameController : MonoBehaviour
                 Text gameOverScoreText = gameOverText.GetComponentsInChildren<Text>()[1];
                 gameOverScoreText.text = "Score: " + playerScore;
                 Debug.Log("GAME OVER");
-            }
-        }
-        else if (currentStage == Level.GameOver)
-        {
-            scoreText.SetActive(false);
-            healthSlider.SetActive(false);
-            gameOverText.SetActive(true);
-
-            enemySpawner.startSpawning = false;
-            PlayerController.isAlive = false;
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                SceneManager.LoadScene(mainMenuLevel);
             }
         }
     }

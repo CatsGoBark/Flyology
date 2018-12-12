@@ -13,6 +13,10 @@ public class EnemyMoveToPlayer : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
+        if(GameController.instance.currentStage == GameController.Level.GameOver) {
+            return;
+        }
+
         transform.LookAt(playerShip.transform.position);
         transform.Rotate(new Vector2(0, -90), Space.Self);
 
