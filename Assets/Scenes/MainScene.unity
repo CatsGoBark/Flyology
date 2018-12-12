@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 735, y: 489.62}
+  m_AnchoredPosition: {x: 735, y: 600}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &181959095
@@ -843,7 +843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: 489.62}
+  m_AnchoredPosition: {x: -225, y: 600}
   m_SizeDelta: {x: 1470, y: 99.997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &915793699
@@ -1526,7 +1526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35367704028fc6429f0670b704c8c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 10
   playerHealthRegen: 1
   playerEnergy: 100
   playerEnergyRegen: 10
